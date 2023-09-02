@@ -141,15 +141,16 @@ def user_rpc_choice():
 
 def draw_shapes():
     shape = shape_choice()
-    
+    symbol = symbol_choice()
     if(shape == "triangle"):
-        draw_triangle()
+        draw_triangle(symbol)
     elif(shape == "rectangle"):
-        draw_rectangle()
+        draw_rectangle(symbol)
 
     print("Thanks for drawing with us today!")
 
 def draw_triangle():
+
     pass
 
 def draw_rectangle():
@@ -162,6 +163,14 @@ def shape_choice():
         return shape_choice()
     return user_choice
     
+def symbol_choice():
+    choice = input("Enter the symbol you would like to user to draw the shapes with: ")
+    if(choice.count == 1):
+        return choice
+    print("Please choose a single character!")
+    press_enter()
+    return symbol_choice()
+
 def currency_converter():
     print("currency")
 
