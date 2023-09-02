@@ -159,10 +159,11 @@ def draw_shapes():
         {
          "name": "rectangle",
          "draw": draw_rectangle
-        },
-
+        }
     ]
-    shape = shape_choice()
+
+    # Uses list comprehension to iterate over all shapes and only return names
+    shape = shape_choice([s['name'] for s in shapes])
     symbol = symbol_choice()
    
     # Searches through the list of dictionaries and finds the one that 
@@ -211,11 +212,11 @@ def draw_circle(symbol):
         print()
 
 
-def shape_choice():
-    user_choice = input("What would you like to draw? (triangle, rectangle, circle)\n").lower()
-    if not (user_choice == "rectangle" or user_choice == "triangle" or user_choice == "circle"):
+def shape_choice(shapes):
+    user_choice = input(f"What would you like to draw? {shapes}\n").lower()
+    if not user_choice in shapes:
         invalid()
-        return shape_choice()
+        return shape_choice(shapes)
     return user_choice
     
 def symbol_choice():
