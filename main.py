@@ -148,6 +148,7 @@ def draw_shapes():
         draw_rectangle(symbol)
 
     print("Thanks for drawing with us today!")
+    press_enter()
 
 def draw_triangle(symbol):
     length = dimension_choice("Length")
