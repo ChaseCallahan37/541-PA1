@@ -141,6 +141,13 @@ def user_rpc_choice():
 
 def draw_shapes():
     shape = shape_choice()
+    
+    if(shape == "triangle"):
+        draw_triangle()
+    elif(shape == "rectangle"):
+        draw_rectangle()
+
+    print("Thanks for drawing with us today!")
 
 def draw_triangle():
     pass
