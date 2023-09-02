@@ -243,6 +243,11 @@ def handle_breakdown(rem, div, name):
         return
     
     count = rem / div
+    
+    # Checks to see if there are any of this denomination before printing
+    if(count < 1):
+        return
+    
     print(f"You have {count} {name}")
     return rem % div
     
