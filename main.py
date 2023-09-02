@@ -166,7 +166,7 @@ def draw_rectangle(symbol):
     for i in range(width):
         for j in range(length):
             print(symbol, end="")
-        print
+        print()
 
 def shape_choice():
     user_choice = input("What would you like to draw? (triangle, rectangle)\n").lower()
