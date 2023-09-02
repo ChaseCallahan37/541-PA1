@@ -200,6 +200,9 @@ def dimension_choice(dim):
     
 def currency_converter():
     amount = curr_amount_choice()
+    curr_breakdown(amount)
+    print("\nThanks for using our conversion service today!")
+    press_enter()
 
 def curr_amount_choice():
     choice = input("How money do you have today?")
@@ -213,6 +216,12 @@ def curr_amount_choice():
         print("Please enter a float value")
         press_enter()
         return curr_amount_choice()
+
+def curr_breakdown(amount):
+    # multiplies by 100 to make calculation easier to handle
+    handle_breakdown(amount * 100, 1)
+    
+def handle_breakdown(rem, div, name):
 
 # Utility functions
 
