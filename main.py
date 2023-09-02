@@ -150,8 +150,13 @@ def draw_shapes():
     print("Thanks for drawing with us today!")
 
 def draw_triangle(symbol):
+    length = dimension_choice("Length")
 
-    pass
+    for i in range(length, 0, -1):
+        for j in i:
+            print(symbol, end="")
+        print()
+    
 
 def draw_rectangle():
     pass
