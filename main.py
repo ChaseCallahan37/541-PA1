@@ -219,9 +219,33 @@ def curr_amount_choice():
 
 def curr_breakdown(amount):
     # multiplies by 100 to make calculation easier to handle
-    handle_breakdown(amount * 100, 1)
+    prepped_num = amount * 100
+    
+    # Dollars
+    rem = handle_breakdown(prepped_num, 100, "Dollars")
+
+    # Quarters
+    rem = handle_breakdown(rem, 25, "Quarters")
+
+    # Dimes
+    rem = handle_breakdown(rem, 10, "Dimes")
+
+    # Nickels
+    rem = handle_breakdown(rem, 5, "Nickels")
+
+    # Pennies
+    rem = handle_breakdown(rem, 1, "Pennies")
+
     
 def handle_breakdown(rem, div, name):
+    # check for 0 in rem to know when breakdown to prevent continuing printing
+    if(rem == 0):
+        return
+    
+    count = rem / div
+    print(f"You have {count} {name}")
+    return rem % div
+    
 
 # Utility functions
 
