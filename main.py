@@ -219,7 +219,7 @@ def curr_amount_choice():
 
 def curr_breakdown(amount):
     # multiplies by 100 to make calculation easier to handle
-    prepped_num = amount * 100
+    prepped_num = int(amount * 100)
     
     # Dollars
     rem = handle_breakdown(prepped_num, 100, "Dollars")
