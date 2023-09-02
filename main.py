@@ -158,8 +158,14 @@ def draw_triangle(symbol):
         print()
     
 
-def draw_rectangle():
-    pass
+def draw_rectangle(symbol):
+    length = dimension_choice("Length")
+    width = dimension_choice("Width")
+
+    for i in width:
+        for j in length:
+            print(symbol, end="")
+        print
 
 def shape_choice():
     user_choice = input("What would you like to draw? (triangle, rectangle)\n").lower()
