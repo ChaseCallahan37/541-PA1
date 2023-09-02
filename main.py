@@ -167,9 +167,11 @@ def draw_shapes():
     symbol = symbol_choice()
    
     # Searches through the list of dictionaries and finds the one that 
-    # matches what the user chose and calls the draw function
-    next((s for s in shapes if s["name"] == shape))["draw"](symbol)
+    # matches what the user chose
+    found_shape = next((s for s in shapes if s["name"] == shape))
 
+    # calls the associated draw function
+    found_shape["draw"](symbol)
 
     print("Thanks for drawing with us today!")
     press_enter()
