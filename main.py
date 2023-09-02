@@ -154,7 +154,7 @@ def draw_triangle(symbol):
     length = dimension_choice("Length")
 
     for i in range(length, 0, -1):
-        for j in i:
+        for j in range(i):
             print(symbol, end="")
         print()
     
@@ -163,8 +163,8 @@ def draw_rectangle(symbol):
     length = dimension_choice("Length")
     width = dimension_choice("Width")
 
-    for i in width:
-        for j in length:
+    for i in range(width):
+        for j in range(length):
             print(symbol, end="")
         print
 
