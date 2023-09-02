@@ -149,7 +149,7 @@ def draw_shapes():
 
     print("Thanks for drawing with us today!")
 
-def draw_triangle():
+def draw_triangle(symbol):
 
     pass
 
@@ -171,6 +171,20 @@ def symbol_choice():
     press_enter()
     return symbol_choice()
 
+def dimension_choice(dim):
+    choice = input(f"Please enter a size for the {dim}")
+    try:
+        num = int(choice)
+        if(num < 2):
+            print("Please enter a number greater than 1")
+            press_enter()
+            return dimension_choice(dim)
+        return num
+    except ValueError:
+        print("Please enter an integer value!")
+        press_enter()
+        return dimension_choice(dim)
+    
 def currency_converter():
     print("currency")
 
