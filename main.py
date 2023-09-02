@@ -1,3 +1,10 @@
+# Bonuses:
+# 1. Rock paper scissors is played with best 2 out of 3
+# 2. You can draw circles in addition to the other listed shapes
+# 3. Code maintenance for adding shapes is easily done, by extending the list of dictionaries
+# 4. For currency conversion, only denominations that have values are listed 
+        # (if 1.50 is entered, only dollars and quarters will be listed)
+
 # Libraries
 import random
 
@@ -140,12 +147,28 @@ def user_rpc_choice():
 
 
 def draw_shapes():
+    shapes = [
+        {
+         "name": "circle",
+         "draw": draw_circle
+        },
+        {
+         "name": "triangle",
+         "draw": draw_triangle
+        },
+        {
+         "name": "rectangle",
+         "draw": draw_rectangle
+        },
+
+    ]
     shape = shape_choice()
     symbol = symbol_choice()
-    if(shape == "triangle"):
-        draw_triangle(symbol)
-    elif(shape == "rectangle"):
-        draw_rectangle(symbol)
+   
+    # Searches through the list of dictionaries and finds the one that 
+    # matches what the user chose and calls the draw function
+    next((s for s in shapes if s["name"] == shape))["draw"](symbol)
+
 
     print("Thanks for drawing with us today!")
     press_enter()
@@ -168,9 +191,29 @@ def draw_rectangle(symbol):
             print(symbol, end="")
         print()
 
+def draw_circle(symbol):
+    radius = dimension_choice("Radius")
+
+    for i in range(radius):
+        spaces = radius - i
+        for j in range(spaces, 0, -1):
+            print(" ", end="")
+        for j in range((radius - spaces) * 2, 0, -1):
+            print(symbol, end = "")
+        print()
+
+    for i in range(radius, 0, -1):
+        spaces = radius - i
+        for j in range(spaces, 0, -1):
+            print(" ", end="")
+        for j in range((radius - spaces) * 2, 0, -1):
+            print(symbol, end = "")
+        print()
+
+
 def shape_choice():
-    user_choice = input("What would you like to draw? (triangle, rectangle)\n").lower()
-    if not (user_choice == "rectangle" or user_choice == "triangle"):
+    user_choice = input("What would you like to draw? (triangle, rectangle, circle)\n").lower()
+    if not (user_choice == "rectangle" or user_choice == "triangle" or user_choice == "circle"):
         invalid()
         return shape_choice()
     return user_choice
