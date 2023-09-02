@@ -140,7 +140,20 @@ def user_rpc_choice():
 
 
 def draw_shapes():
-    print("draw")
+    shape = shape_choice()
+
+def draw_triangle():
+    pass
+
+def draw_rectangle():
+    pass
+
+def shape_choice():
+    user_choice = input("What would you like to draw? (triangle, rectangle)\n").lower()
+    if not (user_choice == "rectangle" or user_choice == "triangle"):
+        invalid()
+        return shape_choice()
+    return user_choice
     
 def currency_converter():
     print("currency")
