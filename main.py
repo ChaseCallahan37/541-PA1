@@ -184,7 +184,7 @@ def symbol_choice():
     return symbol_choice()
 
 def dimension_choice(dim):
-    choice = input(f"Please enter a size for the {dim}")
+    choice = input(f"Please enter a size for the {dim}: ")
     try:
         num = int(choice)
         if(num < 2):
