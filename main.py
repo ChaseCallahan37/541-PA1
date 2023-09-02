@@ -205,7 +205,7 @@ def currency_converter():
     press_enter()
 
 def curr_amount_choice():
-    choice = input("How money do you have today?")
+    choice = input("Please enter the amount of money you have: ")
     try:
         num = float(choice)
         if(num < 0):
@@ -222,34 +222,34 @@ def curr_breakdown(amount):
     prepped_num = int(amount * 100)
     
     # Dollars
-    rem = handle_breakdown(prepped_num, 100, "Dollars")
+    rem = handle_breakdown(prepped_num, 100, "Dollar")
 
     # Quarters
-    rem = handle_breakdown(rem, 25, "Quarters")
+    rem = handle_breakdown(rem, 25, "Quarter")
 
     # Dimes
-    rem = handle_breakdown(rem, 10, "Dimes")
+    rem = handle_breakdown(rem, 10, "Dime")
 
     # Nickels
-    rem = handle_breakdown(rem, 5, "Nickels")
+    rem = handle_breakdown(rem, 5, "Nickel")
 
     # Pennies
-    rem = handle_breakdown(rem, 1, "Pennies")
+    rem = handle_breakdown(rem, 1, "Pennie")
 
     
 def handle_breakdown(rem, div, name):
     # check for 0 in rem to know when breakdown to prevent continuing printing
-    if(rem == 0):
+    if(not rem or rem == 0):
         return
     
-    count = rem / div
-    
+    count = int(rem / div)
+
     # Checks to see if there are any of this denomination before printing
     if(count < 1):
-        return
+        return int(rem % div)
     
-    print(f"You have {count} {name}")
-    return rem % div
+    print(f"You have {count} {name}(s)")
+    return int(rem % div)
     
 
 # Utility functions
