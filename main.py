@@ -183,6 +183,7 @@ def symbol_choice():
     press_enter()
     return symbol_choice()
 
+# Passes in the direction you are entering in (e.g. length, width)
 def dimension_choice(dim):
     choice = input(f"Please enter a size for the {dim}: ")
     try:
