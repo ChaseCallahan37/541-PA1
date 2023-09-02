@@ -177,7 +177,7 @@ def shape_choice():
     
 def symbol_choice():
     choice = input("Enter the symbol you would like to user to draw the shapes with: ")
-    if(choice.count == 1):
+    if(len(choice) == 1):
         return choice
     print("Please choose a single character!")
     press_enter()
