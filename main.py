@@ -199,7 +199,20 @@ def dimension_choice(dim):
         return dimension_choice(dim)
     
 def currency_converter():
-    print("currency")
+    amount = curr_amount_choice()
+
+def curr_amount_choice():
+    choice = input("How money do you have today?")
+    try:
+        num = float(choice)
+        if(num < 0):
+            print("Please enter a positive value")
+            return curr_amount_choice()
+        return num
+    except ValueError:
+        print("Please enter a float value")
+        press_enter()
+        return curr_amount_choice()
 
 # Utility functions
 
