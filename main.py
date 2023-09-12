@@ -58,33 +58,35 @@ def rock_paper_scissors():
     press_enter()
 
 def rpc_winner(score):
-    score = run_rpc(score)
+    updated_score = run_rpc(score)
 
     # Overall win condition for user
     if(
-        score["user"] == 3
+        updated_score["user"] == 3
         or
-        score["user"] == 2 and score["computer"] < 1
+        updated_score["user"] == 2 and updated_score["computer"] < 1
     ):
-        return "user", score
+        return "user", updated_score
     # Overall win condition for computer
     elif(
-        score["computer"] == 3
+        updated_score["computer"] == 3
         or
-        score["computer"] == 2 and score["user"] < 1
+        updated_score["computer"] == 2 and updated_score["user"] < 1
     ):
-        return "computer", score
+        return "computer", updated_score
     # Continues game if no winner determined
     else:
-        return rpc_winner(score)
+        return rpc_winner(updated_score)
 
 
-def convert_rpc_choice(choice):
+def convert_rpc_choice(input):
+    # convert to a string in cases of ints, defensive programming
+    choice = str(input)
     if(choice == "1"):
         return "rock"
     if(choice == "2"):
         return "paper"
-    else:
+    elif(choice == "3"):
         return "scissors"
         
 
@@ -129,7 +131,8 @@ def rpc_score_print(score):
 
 def comp_rpc_choice():
     comp_choice = random.randint(1, 3)
-    return convert_rpc_choice(comp_choice)
+    final_choice = convert_rpc_choice(comp_choice)
+    return final_choice
 
 def rpc_instructions():
     print("This game is played by choosing one of the following options")
@@ -149,7 +152,7 @@ def user_rpc_choice():
 def draw_shapes():
     shapes = [
         {
-         "name": "circle",
+         "name": "diamond",
          "draw": draw_circle
         },
         {
@@ -288,6 +291,7 @@ def handle_breakdown(rem, div, name):
     if(not rem or rem == 0):
         return
     
+    # Gets the number of that denomination is available
     count = int(rem / div)
 
     # Checks to see if there are any of this denomination before printing
@@ -295,6 +299,8 @@ def handle_breakdown(rem, div, name):
         return int(rem % div)
     
     print(f"You have {count} {name}(s)")
+
+    # Returns the remainder, to continue calculation
     return int(rem % div)
     
 
